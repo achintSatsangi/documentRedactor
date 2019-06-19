@@ -39,7 +39,6 @@ documentRedactor.iml
 
 # production
 /document-redactor-frontend/build
-/document-redactor-frontend/public
 
 # misc
 .DS_Store
