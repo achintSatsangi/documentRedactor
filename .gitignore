@@ -25,3 +25,28 @@ hs_err_pid*
 .idea
 .java-version
 documentRedactor.iml
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/document-redactor-frontend/node_modules
+/document-redactor-frontend/.pnp
+.pnp.js
+
+# testing
+/document-redactor-frontend/coverage
+
+# production
+/document-redactor-frontend/build
+/document-redactor-frontend/public
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
