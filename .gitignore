@@ -25,6 +25,7 @@ hs_err_pid*
 .idea
 .java-version
 documentRedactor.iml
+/target
 
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
