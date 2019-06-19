@@ -24,7 +24,7 @@ public class HelloControllerTest {
 
     @Test
     public void greetingShouldReturnDefaultMessage() {
-        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/",
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/hello",
                 String.class)).contains("Greetings from Spring Boot!");
     }
 }
