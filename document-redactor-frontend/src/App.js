@@ -21,12 +21,12 @@ class App extends Component {
         // receive two    parameter endpoint url ,form data
       })
       .then(res => {
-        if (res.status == 200) {
+        if (res.status === 200) {
           alert(
             "File received on server, details : \n" +
               JSON.stringify(res.data, null, 2)
           );
-        } else if (res.status == 500) {
+        } else if (res.status === 500) {
           alert("Something is wrong with the server");
         }
       });
