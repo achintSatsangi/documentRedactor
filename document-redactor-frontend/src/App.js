@@ -21,8 +21,14 @@ class App extends Component {
         // receive two    parameter endpoint url ,form data
       })
       .then(res => {
-        // then print response status
-        console.log(res.statusText);
+        if (res.status == 200) {
+          alert(
+            "File received on server, details : \n" +
+              JSON.stringify(res.data, null, 2)
+          );
+        } else if (res.status == 500) {
+          alert("Something is wrong with the server");
+        }
       });
   };
 
@@ -54,6 +60,7 @@ class App extends Component {
                 onClickUpload={this.onClickHandler}
                 isUploadAllowed={this.isValidFileSelected()}
               />
+              <br />
               <FileObject obj={this.state.selectedFile} />
             </div>
           </div>
