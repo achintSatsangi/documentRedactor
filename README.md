@@ -19,4 +19,6 @@ For running the application
 
 `mvn clean install && java -jar target/documentRedactor-*.jar`
 
+`sh start.sh`
+
 PS : Always good to build right before spinning up the application to have the latest changes
