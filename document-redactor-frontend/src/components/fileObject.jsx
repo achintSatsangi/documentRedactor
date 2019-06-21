@@ -6,7 +6,6 @@ class FileObject extends Component {
     if (this.props.obj === null) return "";
     const file = this.props.obj;
     const displayWarning = file.type.startsWith("image");
-    console.log(displayWarning);
     return (
       <div>
         File Details
