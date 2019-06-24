@@ -6,7 +6,7 @@ Simple app that takes image/pdf as input and redact some specific information as
 - maven
 - A good internet connection :)
 
-#GCP Authentication
+- #####GCP Authentication
 You need to have a json file containing GCP credentials in your system and have an environment variable 
 named "GOOGLE_APPLICATION_CREDENTIALS" pointing to that file for google authentication to work.
 

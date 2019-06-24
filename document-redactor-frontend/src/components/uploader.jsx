@@ -15,10 +15,18 @@ class Uploader extends Component {
         <button
           type="button"
           className="btn btn-success btn-block"
-          onClick={() => this.props.onClickUpload()}
+          onClick={() => this.props.onClickExtractText()}
           disabled={!this.props.isUploadAllowed}
         >
-          Upload
+          Extract Text
+        </button>
+        <button
+          type="button"
+          className="btn btn-success btn-block"
+          onClick={() => this.props.onClickExtractPersonNumber()}
+          disabled={!this.props.isUploadAllowed}
+        >
+          Extract Person Number
         </button>
       </form>
     );

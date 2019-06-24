@@ -13,16 +13,26 @@ class App extends Component {
     this.state = {
       selectedFile: null,
       fileText: null,
-      loading: false
+      loading: false,
+      resultHeader: null
     };
   }
 
-  onClickHandler = () => {
+  onClickExtractTextHandler = () => {
+    this.getResponseFromServer("/extractText", "File contents");
+  };
+
+  onClickExtractPersonNumberHandler = () => {
+    console.log("In onClickExtractPersonNumberHandler");
+    this.getResponseFromServer("/extractPersonNumber", "Person numbers");
+  };
+
+  getResponseFromServer = (path, header) => {
     const data = new FormData();
     data.append("file", this.state.selectedFile);
     this.setState({ loading: true }, () => {
       axios
-        .post("/upload", data, {
+        .post(path, data, {
           // receive two    parameter endpoint url ,form data
         })
         .then(res => {
@@ -31,7 +41,8 @@ class App extends Component {
           this.setState({
             selectedFile: file,
             fileText: text,
-            loading: false
+            loading: false,
+            resultHeader: header
           });
         })
         .catch(error => {
@@ -68,7 +79,10 @@ class App extends Component {
             <div className="col-md-6 center">
               <Uploader
                 onFileChange={this.onChangeHandler}
-                onClickUpload={this.onClickHandler}
+                onClickExtractText={this.onClickExtractTextHandler}
+                onClickExtractPersonNumber={
+                  this.onClickExtractPersonNumberHandler
+                }
                 isUploadAllowed={this.isValidFileSelected()}
               />
               <br />
@@ -78,7 +92,10 @@ class App extends Component {
           {this.state.loading ? (
             <LoadingSpinner />
           ) : (
-            <Output text={this.state.fileText} />
+            <Output
+              text={this.state.fileText}
+              header={this.state.resultHeader}
+            />
           )}
         </div>
       </React.Fragment>

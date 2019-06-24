@@ -13,26 +13,45 @@ import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.multipart.MultipartException;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
 import java.util.Objects;
 
 import static org.springframework.util.StringUtils.cleanPath;
 
 @RestController
-public class UploadController {
+public class FileHandlerController {
 
     private TextExtractorService textExtractorService;
 
+    public static List<String> PATTERNS = List.of("\\d{11}", "\\d{6} \\d{5}", "\\d{6}_\\d{5}", "f.nr.\\d{5}", "f.nr. \\d{5}");
+
     @Autowired
-    public UploadController(TextExtractorService textExtractorService) {
+    public FileHandlerController(TextExtractorService textExtractorService) {
         this.textExtractorService = textExtractorService;
     }
 
-    @PostMapping("/upload")
-    public Response uploadFile(@RequestParam("file") MultipartFile file) {
+    @PostMapping("/extractText")
+    public Response extractText(@RequestParam("file") MultipartFile file) {
         validateFile(file);
         String textInFile = textExtractorService.getTextInFile(file);
         return new Response(cleanPath(file.getOriginalFilename()),
                 file.getContentType(), file.getSize(), textInFile);
+    }
+
+    @PostMapping("/extractPersonNumber")
+    public Response extractPersonNumber(@RequestParam("file") MultipartFile file) {
+        validateFile(file);
+        String textInFile = textExtractorService.getTextInFile(file);
+        StringBuilder sb = new StringBuilder();
+        PATTERNS.forEach(p -> getMatchingPatterns(textInFile, sb, p));
+        return new Response(cleanPath(file.getOriginalFilename()),
+                file.getContentType(), file.getSize(), sb.toString());
+    }
+
+    private StringBuilder getMatchingPatterns(String textInFile, StringBuilder sb, String p) {
+        sb.append("Matches for " + p);
+        sb.append(textExtractorService.getMatchingPattern(textInFile, p)).append("\n");
+        return sb;
     }
 
     @ExceptionHandler(MultipartException.class)

@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 public class TextExtractorService {
@@ -75,6 +78,18 @@ public class TextExtractorService {
             responseText += annotation.getText();
         }
         return responseText;
+    }
+
+    public List<String> getMatchingPattern(String text, String pattern) {
+        List<String> allMatches = new ArrayList<>();
+        String text1 = text.replaceAll("\n", " ");
+        Pattern p = Pattern.compile(pattern);   // the pattern to search for
+        Matcher m = p.matcher(text1);
+        // now try to find at least one match
+        while (m.find()) {
+            allMatches.add(m.group());
+        }
+        return allMatches;
     }
 
 }

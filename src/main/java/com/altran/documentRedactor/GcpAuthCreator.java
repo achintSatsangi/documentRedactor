@@ -8,7 +8,9 @@ import java.nio.file.StandardOpenOption;
 public class GcpAuthCreator {
 
     public static void main(String[] args) throws IOException {
-        Files.createFile(Path.of(System.getenv("GCP_KEY_FILE")));
-        Files.writeString(Path.of(System.getenv("GCP_KEY_FILE")), System.getenv("GCP_CRED"), StandardOpenOption.WRITE);
+        Path gcp_key_file = Path.of(System.getenv("GCP_KEY_FILE"));
+        Files.deleteIfExists(gcp_key_file);
+        Files.createFile(gcp_key_file);
+        Files.writeString(gcp_key_file, System.getenv("GCP_CRED"), StandardOpenOption.WRITE);
     }
 }
