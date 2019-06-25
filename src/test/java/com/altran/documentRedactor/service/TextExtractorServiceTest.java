@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
+import static java.util.regex.Pattern.compile;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -36,7 +37,7 @@ public class TextExtractorServiceTest {
 
     @Test
     public void should_match_pattern() {
-        List<String> result = classToTest.getMatchingPattern("ABCD 123 DFHG 9876", "\\d{4}");
+        List<String> result = classToTest.getMatchingPattern("ABCD 123 DFHG 9876", compile("\\d{4}"));
         Assertions.assertThat(result).hasSize(1).containsExactly("9876");
     }
 }

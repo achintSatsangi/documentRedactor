@@ -36,7 +36,6 @@ public class GoogleVisionApiDao {
                 .setImage(img)
                 .build();
         requests.add(request);
-
         // Performs label detection on the image file
         return vision.batchAnnotateImages(requests);
     }

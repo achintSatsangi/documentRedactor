@@ -27,12 +27,11 @@ public class FileHandlerControllerIT {
     @Test
     public void should_throw_bad_request_exception_if_file_is_null() {
         try{
-            this.restTemplate.postForObject("http://localhost:" + port + "/upload", null, Response.class);
+            this.restTemplate.postForObject("http://localhost:" + port + "/extractText", null, Response.class);
         } catch (Exception e) {
             assertThat(e).isInstanceOf(HttpClientErrorException.class);
             assertThat(((HttpClientErrorException) e).getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
         }
     }
 
-    //TODO Add integration test to verify end to end flow
 }
