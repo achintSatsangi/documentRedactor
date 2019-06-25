@@ -124,6 +124,8 @@ class App extends Component {
               <h5 className="text-danger">
                 Supports images in formats JPG, JPEG, PNG etc
               </h5>
+            </div>
+            <div className="col-md-6 center">
               <Uploader
                 onFileChange={this.onChangeHandler}
                 onClickExtractText={this.onClickExtractTextHandler}
