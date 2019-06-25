@@ -121,8 +121,8 @@ class App extends Component {
                 <li>Extract Norwwegian P numbers is various formats</li>
                 <li>Redact P-numbers in the image and return the file</li>
               </ul>
-              <h5 className="text-warning">
-                Support images only JPB, JPEG, PNG etc
+              <h5 className="text-danger">
+                Supports images in formats JPG, JPEG, PNG etc
               </h5>
               <Uploader
                 onFileChange={this.onChangeHandler}
