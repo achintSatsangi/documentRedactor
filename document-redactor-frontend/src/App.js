@@ -113,9 +113,16 @@ class App extends Component {
           <div className="row">
             <div className="col-md-6 center">
               <h5 className="p-2">
-                This is a dummy document redactor application that can help
-                reading text from images, extract all text and norwegian P
-                numbers... you can use it to redact the info as well
+                This is a dummy app which uses image processing techniques to
+                perform the following actions:
+              </h5>
+              <ul className="p-2">
+                <li>Extract text - handwritten or printed</li>
+                <li>Extract Norwwegian P numbers is various formats</li>
+                <li>Redact P-numbers in the image and return the file</li>
+              </ul>
+              <h5 className="text-warning">
+                Support images only JPB, JPEG, PNG etc
               </h5>
               <Uploader
                 onFileChange={this.onChangeHandler}
