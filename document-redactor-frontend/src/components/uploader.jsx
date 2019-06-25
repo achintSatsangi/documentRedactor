@@ -28,6 +28,14 @@ class Uploader extends Component {
         >
           Extract Person Number
         </button>
+        <button
+          type="button"
+          className="btn btn-success btn-block"
+          onClick={() => this.props.onClickRedactPersonNumber()}
+          disabled={!this.props.isUploadAllowed}
+        >
+          Redact Person Number
+        </button>
       </form>
     );
   }
