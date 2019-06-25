@@ -18,14 +18,20 @@ For application build and test execution
 
 `mvn clean install`
 
-
 For running the application
 
-- Possible to run from the IDE using the Application class
+- Maven Spring boot starter plugin (Recommended... it supports remote debugging on port 5005)
+
+`mvn spring-boot:run`
+ 
 - CML
+
+`sh start.sh`
+
+OR
 
 `mvn clean install && java -jar target/documentRedactor-*.jar`
 
-`sh start.sh`
+
 
 PS : Always good to build right before spinning up the application to have the latest changes
