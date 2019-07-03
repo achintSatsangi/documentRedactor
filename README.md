@@ -33,5 +33,4 @@ OR
 `mvn clean install && java -jar target/documentRedactor-*.jar`
 
 
-
 PS : Always good to build right before spinning up the application to have the latest changes
