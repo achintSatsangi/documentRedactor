@@ -13,10 +13,5 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 12
-    - name: Setup environment variables
-      run: echo Setup credentials ${GCP_KEY_FILE}
-      env:
-        GCP_KEY_FILE: /tmp/gcp.json
-        GCP_CRED: GCP_credentials
     - name: Build with Maven
-      run: mvn clean install -X
+      run: mvn clean install -P github
