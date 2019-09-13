@@ -16,6 +16,6 @@ jobs:
     - name: Setup environment variables
       env:
         GCP_KEY_FILE: /tmp/gcp.json
-        GCP_CRED: GCP credentials
+        GCP_CRED: GCP_credentials
     - name: Build with Maven
       run: mvn clean install -X
