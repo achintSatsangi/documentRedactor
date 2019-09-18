@@ -118,7 +118,7 @@ class App extends Component {
               </h5>
               <ul className="p-2">
                 <li>Extract text - handwritten or printed</li>
-                <li>Extract Norwwegian P numbers in various formats</li>
+                <li>Extract Norwegian Person numbers in various formats</li>
                 <li>Redact P-numbers in the image and return the file</li>
               </ul>
               <h5 className="text-danger">
